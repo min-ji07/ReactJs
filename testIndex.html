@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react이해하기</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    // 함수를 만들어 return 하는것과 같음
+    // const Title = () => {
+    //     return (
+    //         <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>Hello i am span</h3>
+    //     )};
+    /*
+    const h3 = React.createElement(
+        // 태그이름, 속성값, 텍스트값
+        "h3",{
+            style: {color: 'red'},
+            class: 'h3-tag',
+            onMouseEnter: () =>{
+                console.log("mouse enter");
+            }
+        },
+        "Hello i am span"
+    );
+    */
+//    const Button = () => {
+//     return (
+//         <button style={{
+//             backgroundColor: "tomato",
+//         }}
+//         onClick={() => console.log("im clicede")}>
+//             Click me
+//         </button>
+//    )};
+   /*
+    const btn = React.createElement(
+        "button", 
+        {
+            onClick:() => console.log("im clicked")
+        }, 
+        "Click me"
+    );
+    */
+    // const container = React.createElement("div", null, [Title, button])
+
+    // 컴포넌트의 첫글자는 무조건 대문자 소문자일경우 html의 tag로 인식함
+    let counter = 0;
+    function countUp(){
+        counter++;
+        console.log(counter);
+        // 리렌더링
+        render();
+    }
+    // 리렌더링 함수
+    function render(){
+        ReactDOM.render(<Container />, root);
+    }
+    const Container = () => (
+        <div>
+            <h3>Total Clicks: {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>
+    );
+    // html에 출력, Container렌더링
+    // ReactDOM.render(<Container />, root);
+    render();
+</script>
+
+</html>
